@@ -3,7 +3,7 @@ info:
   title: API для получения попапа с предложенным заданием
   version: "1.0.0"
 paths:
-  /new-pop-up:
+  /v110/tasks/proposed-task:
     get:
       summary: Получить попап с предложенным заданием
       description: |
@@ -28,7 +28,7 @@ paths:
                     example: "https://avatar.youdo.com/get.userAvatar?AvatarId=0\u0026AvatarType=H60W60"
                   plain_text:
                     type: string
-                    description: Объединённый текст без форматирования
+                    description: Объединённый текст без форматирования, для версий, которые не поддерживают форматированный текст
                     example: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнетесь на предложенное задание"
                   task_link: 
                     type: string
@@ -73,9 +73,11 @@ components:
         text:
           type: string
           description: Текстовая часть сообщения
+          example: "Вам предложили задание "
         style:
           type: string
           description: Стиль форматирования
+          example: "bold"
           enum:
             - bold
             - bold_blue
