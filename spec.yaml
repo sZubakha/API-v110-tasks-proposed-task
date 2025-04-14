@@ -1,0 +1,114 @@
+openapi: "3.0.0"
+info:
+  title: API для получения попапа с предложенным заданием
+  version: "1.0.0"
+paths:
+   /v110/tasks/proposed-task:
+    get:
+      summary: Получить попап с предложенным заданием
+      description: |
+        Возвращает:
+        - `title`: массив отформатированных блоков заголовка
+        - `message`: массив отформатированных блоков основного текста
+        - `plain_text`: fallback для старых клиентов
+        - `task_link`: ссылка на задание
+        - `icon`: ссылка на иконку
+      responses:
+        '200':
+          description: Успешный ответ с данными сообщения
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  icon:
+                    type: string
+                    format: uri
+                    description: URL иконки
+                    example: "https://avatar.youdo.com/get.userAvatar?AvatarId=0\u0026AvatarType=H60W60"
+                  plain_text:
+                    type: string
+                    description: Объединённый текст без форматирования
+                    example: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнетесь на предложенное задание"
+                  task_link: 
+                    type: string
+                    format: uri
+                    description: URL предложенногозадания
+                    example: "https://youdo.com/t13619539"
+                  title:
+                    type: array
+                    description: Заголовок, состоящий из форматированных частей
+                    items:
+                      $ref: '#/components/schemas/FormattedText'
+                  message:
+                    type: array
+                    description: Основной текст, состоящий из форматированных частей
+                    items:
+                      $ref: '#/components/schemas/FormattedText'
+                required:
+                  - icon
+                  - plain_text
+                  - title
+                  - message
+
+        '400':
+          description: Неверный запрос (например, отсутствует обязательное поле)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    FormattedText:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Текстовая часть сообщения
+        style:
+          type: string
+          description: Стиль форматирования
+          enum:
+            - bold
+            - bold_blue
+            - regular
+      required:
+        - text
+        - style
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: "Invalid request"
+            details:
+              type: string
+              example: "Field 'email' is required"
+            requestId:
+              type: string
+              example: "xyz456pqr"
+            timestamp:
+              type: string
+              format: date-time
+              example: "2025-04-14T21:34:56Z"
+          required:
+            - code
+            - message
+            - details
+            - requestId
+            - timestamp
