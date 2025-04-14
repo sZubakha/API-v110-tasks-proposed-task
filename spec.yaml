@@ -25,31 +25,42 @@ paths:
                     type: string
                     format: uri
                     description: URL иконки
-                    example: "https://avatar.youdo.com/get.userAvatar?AvatarId=0\u0026AvatarType=H60W60"
                   plain_text:
                     type: string
-                    description: Объединённый текст без форматирования, для версий, которые не поддерживают форматированный текст
-                    example: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнетесь на предложенное задание"
-                  task_link: 
+                    description: Объединённый fallback текст
+                  task_link:
                     type: string
                     format: uri
-                    description: URL предложенногозадания
-                    example: "https://youdo.com/t13619539"
+                    description: Ссылка на задание
                   title:
                     type: array
-                    description: Заголовок, состоящий из форматированных частей
+                    description: Заголовок
                     items:
                       $ref: '#/components/schemas/FormattedText'
                   message:
                     type: array
-                    description: Основной текст, состоящий из форматированных частей
+                    description: Основной текст
                     items:
                       $ref: '#/components/schemas/FormattedText'
                 required:
                   - icon
                   - plain_text
+                  - task_link
                   - title
                   - message
+              example:
+                icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=0\u0026AvatarType=H60W60"
+                plain_text: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнетесь на предложенное задание"
+                task_link: "https://youdo.com/t13619539"
+                title:
+                  - text: "Вам предложили задание "
+                    style: "bold"
+                  - text: "«Привезти мягкую игрушку»"
+                    style: "bold_blue"
+                message:
+                  - text: "\nОткликнетесь на предложенное задание"
+                    style: "regular"
+
 
         '400':
           description: Неверный запрос (например, отсутствует обязательное поле)
@@ -139,4 +150,3 @@ components:
             - message
             - requestId
             - timestamp
-
