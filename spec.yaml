@@ -3,7 +3,7 @@ info:
   title: API для получения попапа с предложенным заданием
   version: "1.0.0"
 paths:
-   /v110/tasks/proposed-task:
+  /new-pop-up:
     get:
       summary: Получить попап с предложенным заданием
       description: |
@@ -56,14 +56,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ClientErrorResponse'
 
         '500':
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ServerErrorResponse'
 
 components:
   schemas:
@@ -84,7 +84,7 @@ components:
         - text
         - style
 
-    ErrorResponse:
+    ClientErrorResponse:
       type: object
       properties:
         error:
@@ -105,10 +105,36 @@ components:
             timestamp:
               type: string
               format: date-time
-              example: "2025-04-14T21:34:56Z"
+              example: "2025-04-14T22:34:56Z"
           required:
             - code
             - message
             - details
             - requestId
             - timestamp
+
+    ServerErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              example: 500
+            message:
+              type: string
+              example: "Internal server error"
+            requestId:
+              type: string
+              example: "abc123xyz"
+            timestamp:
+              type: string
+              format: date-time
+              example: "2025-04-14T22:34:56Z"
+          required:
+            - code
+            - message
+            - requestId
+            - timestamp
+
