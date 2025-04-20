@@ -1,16 +1,15 @@
+---
 openapi: 3.0.3
 info:
   title: Pop-up API
   version: 1.0.0
-  description: API для получения попапов в зависимости от состояния пользователя и страницы источника запроса.
-
+  description: API для получения попапов в зависимости от состояния пользователя и
+    страницы источника запроса.
 servers:
   - url: https://youdo.ru
     description: Основной сервер API
-
 security:
   - cookieAuth: []
-
 paths:
   /pop-ups:
     get:
@@ -20,12 +19,13 @@ paths:
         - name: X-Source-Page
           in: header
           required: false
-          description: URL страницы, с которой пришёл пользователь (влияет на логику показа pop-up окон)
+          description: URL страницы, с которой пришёл пользователь (влияет на логику
+            показа pop-up окон)
           schema:
             type: string
             example: /profile
       responses:
-        '200':
+        "200":
           description: Успешный ответ со списком попапов.
           content:
             application/json:
@@ -35,17 +35,19 @@ paths:
                   pop_ups:
                     type: array
                     items:
-                      $ref: '#/components/schemas/PopUp'
+                      $ref: "#/components/schemas/PopUp"
               example:
                 pop_ups:
                   - id: 126
                     pop_ups_name: proposed-task
-                    plain_text: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание"
-                    icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60"
+                    plain_text: |-
+                      Вам предложили задание «Привезти мягкую игрушку»
+                      Откликнитесь на предложенное задание
+                    icon: https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60
                     clickableArea: pop-up
-                    link: "https://youdo.com/t13619539"
+                    link: https://youdo.com/t13619539
                     title:
-                      - text: "Вам предложили задание «Привезти мягкую игрушку»"
+                      - text: Вам предложили задание «Привезти мягкую игрушку»
                         styles:
                           - type: bold
                             offset: 0
@@ -55,44 +57,43 @@ paths:
                             offset: 23
                             length: 48
                     message:
-                      - text: "Откликнитесь на предложенное задание"
+                      - text: Откликнитесь на предложенное задание
                         styles:
                           - type: italic
                             offset: 0
                             length: 29
-        '400':
+        "400":
           description: Неверный запрос
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 400
-                  message: "Invalid request"
-                  details: "Field 'email' is required"
-                  requestId: "xyz456pqr"
-                  timestamp: "2025-02-25T12:34:56Z"
-        '500':
+                  message: Invalid request
+                  details: Field 'email' is required
+                  requestId: xyz456pqr
+                  timestamp: 2025-02-25T12:34:56Z
+        "500":
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 500
-                  message: "Internal server error"
-                  details: "Unexpected condition occurred"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-
+                  message: Internal server error
+                  details: Unexpected condition occurred
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
   /pop-ups/proposed-task:
     get:
       summary: Получение попапа для предложенного задания
       description: Возвращает попап с предложением выполнить задание.
       responses:
-        '200':
+        "200":
           description: Успешный ответ с попапом для предложенного задания.
           content:
             application/json:
@@ -102,17 +103,19 @@ paths:
                   pop_ups:
                     type: array
                     items:
-                      $ref: '#/components/schemas/PopUp'
+                      $ref: "#/components/schemas/PopUp"
               example:
                 pop_ups:
                   - id: 127
                     pop_ups_name: proposed-task
-                    plain_text: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание"
-                    icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=1&AvatarType=H60W60"
+                    plain_text: |-
+                      Вам предложили задание «Привезти мягкую игрушку»
+                      Откликнитесь на предложенное задание
+                    icon: https://avatar.youdo.com/get.userAvatar?AvatarId=1&AvatarType=H60W60
                     clickableArea: pop-up
-                    link: "https://youdo.com/t13619540"
+                    link: https://youdo.com/t13619540
                     title:
-                      - text: "Вам предложили задание «Привезти мягкую игрушку»"
+                      - text: Вам предложили задание «Привезти мягкую игрушку»
                         styles:
                           - type: bold
                             offset: 0
@@ -122,44 +125,43 @@ paths:
                             offset: 23
                             length: 48
                     message:
-                      - text: "Откликнитесь на предложенное задание"
+                      - text: Откликнитесь на предложенное задание
                         styles:
                           - type: italic
                             offset: 0
                             length: 29
-        '400':
+        "400":
           description: Неверный запрос
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 400
-                  message: "Invalid request"
-                  details: "Field 'task_id' is required"
-                  requestId: "xyz456pqr"
-                  timestamp: "2025-02-25T12:34:56Z"
-        '500':
+                  message: Invalid request
+                  details: Field 'task_id' is required
+                  requestId: xyz456pqr
+                  timestamp: 2025-02-25T12:34:56Z
+        "500":
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 500
-                  message: "Internal server error"
-                  details: "Unexpected condition occurred"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-
+                  message: Internal server error
+                  details: Unexpected condition occurred
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
   /pop-ups/subscribe:
     get:
       summary: Получение попапа для подписки
       description: Возвращает попап с предложением подписаться на новостную рассылку.
       responses:
-        '200':
+        "200":
           description: Успешный ответ с попапом для подписки.
           content:
             application/json:
@@ -169,18 +171,19 @@ paths:
                   pop_ups:
                     type: array
                     items:
-                      $ref: '#/components/schemas/PopUp'
+                      $ref: "#/components/schemas/PopUp"
               example:
                 pop_ups:
                   - id: 128
                     pop_ups_name: subscribe
-                    plain_text: "Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные обновления!"
-                    icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60"
+                    plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
+                      обновления!
+                    icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
                     clickableArea: button
-                    button_name: "Подписаться"
-                    link: "https://youdo.com/subscribe"
+                    button_name: Подписаться
+                    link: https://youdo.com/subscribe
                     title:
-                      - text: "Подписка"
+                      - text: Подписка
                         styles:
                           - type: bold
                             offset: 0
@@ -190,44 +193,43 @@ paths:
                             offset: 0
                             length: 22
                     message:
-                      - text: "Подпишитесь на нашу новостную рассылку"
+                      - text: Подпишитесь на нашу новостную рассылку
                         styles:
                           - type: italic
                             offset: 0
                             length: 36
-        '400':
+        "400":
           description: Неверный запрос
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 400
-                  message: "Invalid request"
-                  details: "Field 'user_id' is required"
-                  requestId: "xyz456pqr"
-                  timestamp: "2025-02-25T12:34:56Z"
-        '500':
+                  message: Invalid request
+                  details: Field 'user_id' is required
+                  requestId: xyz456pqr
+                  timestamp: 2025-02-25T12:34:56Z
+        "500":
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 500
-                  message: "Internal server error"
-                  details: "Unexpected condition occurred"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-
+                  message: Internal server error
+                  details: Unexpected condition occurred
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
   /pop-ups/verify:
     get:
       summary: Получение попапа для верификации
       description: Возвращает попап для верификации пользователя.
       responses:
-        '200':
+        "200":
           description: Успешный ответ с попапом для верификации.
           content:
             application/json:
@@ -237,18 +239,19 @@ paths:
                   pop_ups:
                     type: array
                     items:
-                      $ref: '#/components/schemas/PopUp'
+                      $ref: "#/components/schemas/PopUp"
               example:
                 pop_ups:
                   - id: 129
                     pop_ups_name: verify
-                    plain_text: "Пожалуйста, подтвердите ваш адрес электронной почты, чтобы завершить регистрацию."
-                    icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=3&AvatarType=H60W60"
+                    plain_text: Пожалуйста, подтвердите ваш адрес электронной почты, чтобы завершить
+                      регистрацию.
+                    icon: https://avatar.youdo.com/get.userAvatar?AvatarId=3&AvatarType=H60W60
                     clickableArea: button
-                    button_name: "Подтвердить"
-                    link: "https://youdo.com/verify"
+                    button_name: Подтвердить
+                    link: https://youdo.com/verify
                     title:
-                      - text: "Верификация"
+                      - text: Верификация
                         styles:
                           - type: bold
                             offset: 0
@@ -258,44 +261,44 @@ paths:
                             offset: 0
                             length: 22
                     message:
-                      - text: "Подтвердите ваш адрес электронной почты"
+                      - text: Подтвердите ваш адрес электронной почты
                         styles:
                           - type: italic
                             offset: 0
                             length: 36
-        '400':
+        "400":
           description: Неверный запрос
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 400
-                  message: "Invalid request"
-                  details: "Field 'email' is required"
-                  requestId: "xyz456pqr"
-                  timestamp: "2025-02-25T12:34:56Z"
-        '500':
+                  message: Invalid request
+                  details: Field 'email' is required
+                  requestId: xyz456pqr
+                  timestamp: 2025-02-25T12:34:56Z
+        "500":
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 500
-                  message: "Internal server error"
-                  details: "Unexpected condition occurred"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-
+                  message: Internal server error
+                  details: Unexpected condition occurred
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
   /pop-ups/sufficient-tasks-warning:
     get:
       summary: Получение попапа с предупреждением о достаточном количестве задач
-      description: Возвращает попап с предупреждением, что у пользователя есть достаточное количество задач.
+      description: Возвращает попап с предупреждением, что у пользователя есть
+        достаточное количество задач.
       responses:
-        '200':
+        "200":
           description: Успешный ответ с попапом о достаточном количестве задач.
           content:
             application/json:
@@ -305,17 +308,18 @@ paths:
                   pop_ups:
                     type: array
                     items:
-                      $ref: '#/components/schemas/PopUp'
+                      $ref: "#/components/schemas/PopUp"
               example:
                 pop_ups:
                   - id: 130
                     pop_ups_name: sufficient-tasks-warning
-                    plain_text: "У вас уже достаточно задач, чтобы начать работать. Пожалуйста, завершите текущие задания перед тем, как брать новые."
-                    icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=4&AvatarType=H60W60"
+                    plain_text: У вас уже достаточно задач, чтобы начать работать. Пожалуйста,
+                      завершите текущие задания перед тем, как брать новые.
+                    icon: https://avatar.youdo.com/get.userAvatar?AvatarId=4&AvatarType=H60W60
                     clickableArea: pop-up
-                    link: "https://youdo.com/tasks"
+                    link: https://youdo.com/tasks
                     title:
-                      - text: "Предупреждение"
+                      - text: Предупреждение
                         styles:
                           - type: bold
                             offset: 0
@@ -325,39 +329,38 @@ paths:
                             offset: 0
                             length: 22
                     message:
-                      - text: "Завершите текущие задания"
+                      - text: Завершите текущие задания
                         styles:
                           - type: italic
                             offset: 0
                             length: 36
-        '400':
+        "400":
           description: Неверный запрос
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 400
-                  message: "Invalid request"
-                  details: "Field 'task_id' is required"
-                  requestId: "xyz456pqr"
-                  timestamp: "2025-02-25T12:34:56Z"
-        '500':
+                  message: Invalid request
+                  details: Field 'task_id' is required
+                  requestId: xyz456pqr
+                  timestamp: 2025-02-25T12:34:56Z
+        "500":
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 500
-                  message: "Internal server error"
-                  details: "Unexpected condition occurred"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-
-  /pop-ups/{id}/close:
+                  message: Internal server error
+                  details: Unexpected condition occurred
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
+  "/pop-ups/{id}/close":
     post:
       summary: Закрытие попапа
       description: Закрывает попап с заданным ID.
@@ -385,14 +388,12 @@ paths:
                   description: Временная метка
               required:
                 - pop_ups_name
-                - timestamp   
-            example: 
-                pop_ups_name: "proposed-task"
-                timestamp: "2025-02-25T12:34:56Z"   
-            
-                
+                - timestamp
+            example:
+              pop_ups_name: proposed-task
+              timestamp: 2025-02-25T12:34:56Z
       responses:
-        '200':
+        "200":
           description: Успешное закрытие попапа
           content:
             application/json:
@@ -402,34 +403,33 @@ paths:
                   success:
                     type: boolean
                     example: true
-        '404':
+        "404":
           description: Попап не найден
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 404
-                  message: "Pop-up not found"
-                  details: "Pop-up with ID '126' not found"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-        '500':
+                  message: Pop-up not found
+                  details: Pop-up with ID '126' not found
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
+        "500":
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 500
-                  message: "Internal server error"
-                  details: "Unexpected condition occurred"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-
-  /pop-ups/{id}/view:
+                  message: Internal server error
+                  details: Unexpected condition occurred
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
+  "/pop-ups/{id}/view":
     post:
       summary: Просмотр попапа
       description: Помечает попап как просмотренный.
@@ -457,12 +457,12 @@ paths:
                   description: Временная метка
               required:
                 - pop_ups_name
-                - timestamp   
-            example: 
-                pop_ups_name: "proposed-task"
-                timestamp: "2025-02-25T12:34:56Z"  
+                - timestamp
+            example:
+              pop_ups_name: proposed-task
+              timestamp: 2025-02-25T12:34:56Z
       responses:
-        '200':
+        "200":
           description: Успешное обновление статуса попапа
           content:
             application/json:
@@ -472,42 +472,41 @@ paths:
                   success:
                     type: boolean
                     example: true
-        '404':
+        "404":
           description: Попап не найден
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 404
-                  message: "Pop-up not found"
-                  details: "Pop-up with ID '126' not found"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-        '500':
+                  message: Pop-up not found
+                  details: Pop-up with ID '126' not found
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
+        "500":
           description: Внутренняя ошибка сервера
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
               example:
                 error:
                   code: 500
-                  message: "Internal server error"
-                  details: "Unexpected condition occurred"
-                  requestId: "abc123def"
-                  timestamp: "2025-02-25T12:34:56Z"
-
+                  message: Internal server error
+                  details: Unexpected condition occurred
+                  requestId: abc123def
+                  timestamp: 2025-02-25T12:34:56Z
 components:
-  securitySchemes:  
-    cookieAuth:    
+  securitySchemes:
+    cookieAuth:
       type: apiKey
       in: cookie
       name: session_token
       description: Аутентификация через токен в cookies
-  schemas:        
-    PopUp:        
+  schemas:
+    PopUp:
       type: object
       required:
         - id
@@ -523,22 +522,24 @@ components:
           example: 126
         pop_ups_name:
           type: string
-          example: "proposed-task"
+          example: proposed-task
         plain_text:
           type: string
-          example: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание"
+          example: |-
+            Вам предложили задание «Привезти мягкую игрушку»
+            Откликнитесь на предложенное задание
         icon:
           type: string
-          example: "https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60"
+          example: https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60
         clickableArea:
           type: string
-          example: "pop-up"
+          example: pop-up
         button_name:
           type: string
-          example: "Подписаться"
+          example: Подписаться
         link:
           type: string
-          example: "https://youdo.com/t13619539"
+          example: https://youdo.com/t13619539
         title:
           type: array
           description: Заголовок попапа с возможностью стилизации текста.
@@ -547,7 +548,7 @@ components:
             properties:
               text:
                 type: string
-                example: "Вам предложили задание «Привезти мягкую игрушку»"
+                example: Вам предложили задание «Привезти мягкую игрушку»
               styles:
                 type: array
                 items:
@@ -555,7 +556,7 @@ components:
                   properties:
                     type:
                       type: string
-                      example: "bold"
+                      example: bold
                     offset:
                       type: integer
                       example: 0
@@ -570,7 +571,7 @@ components:
             properties:
               text:
                 type: string
-                example: "Откликнитесь на предложенное задание"
+                example: Откликнитесь на предложенное задание
               styles:
                 type: array
                 items:
@@ -578,14 +579,13 @@ components:
                   properties:
                     type:
                       type: string
-                      example: "italic"
+                      example: italic
                     offset:
                       type: integer
                       example: 0
                     length:
                       type: integer
                       example: 29
-
     ErrorResponse:
       type: object
       required:
@@ -599,14 +599,14 @@ components:
               example: 400
             message:
               type: string
-              example: "Invalid request"
+              example: Invalid request
             details:
               type: string
-              example: "Field 'email' is required"
+              example: Field 'email' is required
             requestId:
               type: string
-              example: "xyz456pqr"
+              example: xyz456pqr
             timestamp:
               type: string
               format: date-time
-              example: "2025-02-25T12:34:56Z"
+              example: 2025-02-25T12:34:56Z
