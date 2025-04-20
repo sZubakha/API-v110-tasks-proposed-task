@@ -500,15 +500,15 @@ paths:
                   timestamp: "2025-02-25T12:34:56Z"
 
 components:
-  securitySchemes:
-    cookieAuth:
-      type: apiKey    
-      in: cookie        
-      name: session_token  
+  securitySchemes:  
+    cookieAuth:    
+      type: apiKey
+      in: cookie
+      name: session_token
       description: Аутентификация через токен в cookies
 
- schemas:
-    PopUp:
+  schemas:        
+    PopUp:        
       type: object
       required:
         - id
