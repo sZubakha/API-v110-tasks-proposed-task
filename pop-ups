@@ -64,8 +64,7 @@ paths:
                             length: 29
                   - id: 128
                     pop_ups_name: subscribe
-                    plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
-                      обновления!
+                    plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные обновления!
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
                     clickable_area: button
                     button_name: Подписаться
