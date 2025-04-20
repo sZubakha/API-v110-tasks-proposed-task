@@ -71,7 +71,8 @@ paths:
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
-                      - text: Подписка
+                      - text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
+                      обновления!
                         styles:
                           - type: bold
                             offset: 0
@@ -80,12 +81,6 @@ paths:
                             value: "#4caf50"
                             offset: 0
                             length: 22
-                    message:
-                      - text: Подпишитесь на нашу новостную рассылку
-                        styles:
-                          - type: italic
-                            offset: 0
-                            length: 36
         "400":
           description: Неверный запрос
           content:
@@ -207,7 +202,8 @@ paths:
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
-                      - text: Подписка
+                      - text:  Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
+                      обновления!
                         styles:
                           - type: bold
                             offset: 0
@@ -215,13 +211,7 @@ paths:
                           - type: color
                             value: "#4caf50"
                             offset: 0
-                            length: 22
-                    message:
-                      - text: Подпишитесь на нашу новостную рассылку
-                        styles:
-                          - type: italic
-                            offset: 0
-                            length: 36
+                            length: 22                   
         "400":
           description: Неверный запрос
           content:
@@ -275,7 +265,8 @@ paths:
                     button_name: Подтвердить
                     link: https://youdo.com/verify
                     title:
-                      - text: Верификация
+                      - text: Пожалуйста, подтвердите ваш адрес электронной почты, чтобы завершить
+                      регистрацию.
                         styles:
                           - type: bold
                             offset: 0
@@ -284,12 +275,6 @@ paths:
                             value: "#2196f3"
                             offset: 0
                             length: 22
-                    message:
-                      - text: Подтвердите ваш адрес электронной почты
-                        styles:
-                          - type: italic
-                            offset: 0
-                            length: 36
         "400":
           description: Неверный запрос
           content:
@@ -343,7 +328,7 @@ paths:
                     clickable_area: pop-up
                     link: https://youdo.com/tasks
                     title:
-                      - text: Предупреждение
+                      - text: У вас уже достаточно задач, чтобы начать работать.
                         styles:
                           - type: bold
                             offset: 0
@@ -353,7 +338,8 @@ paths:
                             offset: 0
                             length: 22
                     message:
-                      - text: Завершите текущие задания
+                      - text: Пожалуйста,
+                      завершите текущие задания перед тем, как брать новые.
                         styles:
                           - type: italic
                             offset: 0
@@ -539,7 +525,6 @@ components:
         - clickable_area
         - link
         - title
-        - message
       properties:
         id:
           type: integer
