@@ -62,6 +62,30 @@ paths:
                           - type: italic
                             offset: 0
                             length: 29
+                  - id: 128
+                    pop_ups_name: subscribe
+                    plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
+                      обновления!
+                    icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
+                    clickableArea: button
+                    button_name: Подписаться
+                    link: https://youdo.com/subscribe
+                    title:
+                      - text: Подписка
+                        styles:
+                          - type: bold
+                            offset: 0
+                            length: 22
+                          - type: color
+                            value: "#4caf50"
+                            offset: 0
+                            length: 22
+                    message:
+                      - text: Подпишитесь на нашу новостную рассылку
+                        styles:
+                          - type: italic
+                            offset: 0
+                            length: 36
         "400":
           description: Неверный запрос
           content:
