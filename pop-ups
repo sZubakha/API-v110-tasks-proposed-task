@@ -44,7 +44,7 @@ paths:
                       Вам предложили задание «Привезти мягкую игрушку»
                       Откликнитесь на предложенное задание
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60
-                    clickableArea: pop-up
+                    clickable_area: pop-up
                     link: https://youdo.com/t13619539
                     title:
                       - text: Вам предложили задание «Привезти мягкую игрушку»
@@ -67,7 +67,7 @@ paths:
                     plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
                       обновления!
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
-                    clickableArea: button
+                    clickable_area: button
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
@@ -136,7 +136,7 @@ paths:
                       Вам предложили задание «Привезти мягкую игрушку»
                       Откликнитесь на предложенное задание
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=1&AvatarType=H60W60
-                    clickableArea: pop-up
+                    clickable_area: pop-up
                     link: https://youdo.com/t13619540
                     title:
                       - text: Вам предложили задание «Привезти мягкую игрушку»
@@ -203,7 +203,7 @@ paths:
                     plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
                       обновления!
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
-                    clickableArea: button
+                    clickable_area: button
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
@@ -271,7 +271,7 @@ paths:
                     plain_text: Пожалуйста, подтвердите ваш адрес электронной почты, чтобы завершить
                       регистрацию.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=3&AvatarType=H60W60
-                    clickableArea: button
+                    clickable_area: button
                     button_name: Подтвердить
                     link: https://youdo.com/verify
                     title:
@@ -340,7 +340,7 @@ paths:
                     plain_text: У вас уже достаточно задач, чтобы начать работать. Пожалуйста,
                       завершите текущие задания перед тем, как брать новые.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=4&AvatarType=H60W60
-                    clickableArea: pop-up
+                    clickable_area: pop-up
                     link: https://youdo.com/tasks
                     title:
                       - text: Предупреждение
@@ -536,7 +536,7 @@ components:
         - id
         - pop_ups_name
         - plain_text
-        - clickableArea
+        - clickable_area
         - link
         - title
         - message
@@ -555,7 +555,7 @@ components:
         icon:
           type: string
           example: https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60
-        clickableArea:
+        clickable_area:
           type: string
           example: pop-up
         button_name:
