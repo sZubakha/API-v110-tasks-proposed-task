@@ -454,6 +454,14 @@ components:
   schemas:
     PopUp:
       type: object
+      required:
+        - id
+        - name
+        - plain_text
+        - clickableArea
+        - link
+        - title
+        - message
       properties:
         id:
           type: integer
@@ -520,6 +528,8 @@ components:
 
     ErrorResponse:
       type: object
+      required:
+        - error
       properties:
         error:
           type: object
