@@ -500,7 +500,7 @@ paths:
                   timestamp: "2025-02-25T12:34:56Z"
 
 components:
-securitySchemes:
+  securitySchemes:
     cookieAuth:
       type: apiKey    
       in: cookie        
