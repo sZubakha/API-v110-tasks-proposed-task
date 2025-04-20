@@ -3,9 +3,13 @@ info:
   title: Pop-up API
   version: 1.0.0
   description: API для получения попапов в зависимости от состояния пользователя и страницы источника запроса.
+
 servers:
   - url: https://youdo.ru
     description: Основной сервер API
+
+security:
+  - cookieAuth: []
 
 paths:
   /pop-ups:
@@ -496,6 +500,13 @@ paths:
                   timestamp: "2025-02-25T12:34:56Z"
 
 components:
+securitySchemes:
+    cookieAuth:
+      type: apiKey    
+      in: cookie        
+      name: session_token  
+      description: Аутентификация через токен в cookies
+
   schemas:
     PopUp:
       type: object
