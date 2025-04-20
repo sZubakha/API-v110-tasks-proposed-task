@@ -64,13 +64,13 @@ paths:
                             length: 29
                   - id: 128
                     pop_ups_name: subscribe
-                    plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные обновления!
+                    plain_text: Подпишитесь на новые задания, чтобы первым получить заказ.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
                     clickable_area: button
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
-                      - text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные обновления!
+                      - text: Подпишитесь на новые задания, чтобы первым получить заказ.
                         styles:
                           - type: bold
                             offset: 0
@@ -176,7 +176,7 @@ paths:
   /pop-ups/subscribe:
     get:
       summary: Получение попапа для подписки
-      description: Возвращает попап с предложением подписаться на новостную рассылку.
+      description: Возвращает попап с предложением подписаться на рассылку о новых заданиях.
       responses:
         "200":
           description: Успешный ответ с попапом для подписки.
@@ -193,14 +193,13 @@ paths:
                 pop_ups:
                   - id: 128
                     pop_ups_name: subscribe
-                    plain_text: Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные
-                      обновления!
+                    plain_text: Подпишитесь на новые задания, чтобы первым получить заказ.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
                     clickable_area: button
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
-                      - text:  Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные обновления!
+                      - text: Подпишитесь на новые задания, чтобы первым получить заказ.
                         styles:
                           - type: bold
                             offset: 0
@@ -255,14 +254,13 @@ paths:
                 pop_ups:
                   - id: 129
                     pop_ups_name: verify
-                    plain_text: Пожалуйста, подтвердите ваш адрес электронной почты, чтобы завершить
-                      регистрацию.
+                    plain_text: Сейчас в вашем городе идёт большая рекламная кампания YouDo. Заданий будет ещё больше! Станьте исполнителем и начните зарабатывать.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=3&AvatarType=H60W60
                     clickable_area: button
                     button_name: Подтвердить
                     link: https://youdo.com/verify
                     title:
-                      - text: Пожалуйста, подтвердите ваш адрес электронной почты, чтобы завершить регистрацию.
+                      - text: Сейчас в вашем городе идёт большая рекламная кампания YouDo. Заданий будет ещё больше! Станьте исполнителем и начните зарабатывать.
                         styles:
                           - type: bold
                             offset: 0
@@ -297,11 +295,10 @@ paths:
                   details: Unexpected condition occurred
                   requestId: abc123def
                   timestamp: 2025-02-25T12:34:56Z
-  /pop-ups/sufficient-tasks-warning:
+  /pop-ups/insufficient-tasks-warning:
     get:
-      summary: Получение попапа с предупреждением о достаточном количестве задач
-      description: Возвращает попап с предупреждением, что у пользователя есть
-        достаточное количество задач.
+      summary: Получение попапа с предупреждением о недостаточном количестве задач
+      description: Возвращает попап с предупреждением, что в городе недостаточно задач
       responses:
         "200":
           description: Успешный ответ с попапом о достаточном количестве задач.
@@ -318,13 +315,12 @@ paths:
                 pop_ups:
                   - id: 130
                     pop_ups_name: sufficient-tasks-warning
-                    plain_text: У вас уже достаточно задач, чтобы начать работать. Пожалуйста,
-                      завершите текущие задания перед тем, как брать новые.
+                    plain_text: YouDo недавно появился в вашем городе, поэтому заказов пока немного. Подпишитесь на уведомления, чтобы быстро узнавать о новых заданиях.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=4&AvatarType=H60W60
                     clickable_area: pop-up
                     link: https://youdo.com/tasks
                     title:
-                      - text: У вас уже достаточно задач, чтобы начать работать.
+                      - text: uDo недавно появился в вашем городе, поэтому заказов пока немного.
                         styles:
                           - type: bold
                             offset: 0
@@ -334,7 +330,7 @@ paths:
                             offset: 0
                             length: 22
                     message:
-                      - text: Пожалуйста, завершите текущие задания перед тем, как брать новые.
+                      - text: Подпишитесь на уведомления, чтобы быстро узнавать о новых заданиях.
                         styles:
                           - type: italic
                             offset: 0
