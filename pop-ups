@@ -3,6 +3,9 @@ info:
   title: Pop-up API
   version: 1.0.0
   description: API для получения попапов в зависимости от состояния пользователя и страницы источника запроса.
+servers:
+  - url: https://youdo.ru
+    description: Основной сервер API
 
 paths:
   /pop-ups:
@@ -32,7 +35,7 @@ paths:
               example:
                 pop_ups:
                   - id: 126
-                    name: proposed-task
+                    pop_ups_name: proposed-task
                     plain_text: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание"
                     icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60"
                     clickableArea: pop-up
@@ -99,8 +102,8 @@ paths:
               example:
                 pop_ups:
                   - id: 127
-                    name: proposed-task
-                    plain_text: "Вам предложили задание «Починить телевизор»\nОткликнитесь на предложенное задание"
+                    pop_ups_name: proposed-task
+                    plain_text: "Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание"
                     icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=1&AvatarType=H60W60"
                     clickableArea: pop-up
                     link: "https://youdo.com/t13619540"
@@ -166,7 +169,7 @@ paths:
               example:
                 pop_ups:
                   - id: 128
-                    name: subscribe
+                    pop_ups_name: subscribe
                     plain_text: "Подпишитесь на нашу новостную рассылку, чтобы не пропустить важные обновления!"
                     icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60"
                     clickableArea: button
@@ -234,7 +237,7 @@ paths:
               example:
                 pop_ups:
                   - id: 129
-                    name: verify
+                    pop_ups_name: verify
                     plain_text: "Пожалуйста, подтвердите ваш адрес электронной почты, чтобы завершить регистрацию."
                     icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=3&AvatarType=H60W60"
                     clickableArea: button
@@ -302,7 +305,7 @@ paths:
               example:
                 pop_ups:
                   - id: 130
-                    name: sufficient-tasks-warning
+                    pop_ups_name: sufficient-tasks-warning
                     plain_text: "У вас уже достаточно задач, чтобы начать работать. Пожалуйста, завершите текущие задания перед тем, как брать новые."
                     icon: "https://avatar.youdo.com/get.userAvatar?AvatarId=4&AvatarType=H60W60"
                     clickableArea: pop-up
@@ -362,6 +365,28 @@ paths:
           schema:
             type: string
             example: "126"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pop_ups_name:
+                  type: string
+                  description: Имя попапа
+                timestamp:
+                  type: string
+                  format: date-time
+                  description: Временная метка
+              required:
+                - pop_ups_name
+                - timestamp   
+            example: 
+                pop_ups_name: "proposed-task"
+                timestamp: "2025-02-25T12:34:56Z"   
+            
+                
       responses:
         '200':
           description: Успешное закрытие попапа
@@ -412,6 +437,26 @@ paths:
           schema:
             type: string
             example: "126"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pop_ups_name:
+                  type: string
+                  description: Имя попапа
+                timestamp:
+                  type: string
+                  format: date-time
+                  description: Временная метка
+              required:
+                - pop_ups_name
+                - timestamp   
+            example: 
+                pop_ups_name: "proposed-task"
+                timestamp: "2025-02-25T12:34:56Z"  
       responses:
         '200':
           description: Успешное обновление статуса попапа
@@ -456,7 +501,7 @@ components:
       type: object
       required:
         - id
-        - name
+        - pop_ups_name
         - plain_text
         - clickableArea
         - link
@@ -466,7 +511,7 @@ components:
         id:
           type: integer
           example: 126
-        name:
+        pop_ups_name:
           type: string
           example: "proposed-task"
         plain_text:
@@ -483,6 +528,7 @@ components:
           example: "https://youdo.com/t13619539"
         title:
           type: array
+          description: Заголовок попапа с возможностью стилизации текста.
           items:
             type: object
             properties:
@@ -505,6 +551,7 @@ components:
                       example: 22
         message:
           type: array
+          description: Текст попапа с возможностью стилизации текста.
           items:
             type: object
             properties:
