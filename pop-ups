@@ -6,7 +6,7 @@ info:
   description: API для получения попапов в зависимости от состояния пользователя и
     страницы источника запроса.
 servers:
-  - url: https://youdo.ru
+  - url: https://youdo.com
     description: Основной сервер API
 security:
   - cookieAuth: []
