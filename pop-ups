@@ -507,7 +507,7 @@ components:
       name: session_token  
       description: Аутентификация через токен в cookies
 
-  schemas:
+ schemas:
     PopUp:
       type: object
       required:
