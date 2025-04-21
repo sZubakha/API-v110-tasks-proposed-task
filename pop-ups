@@ -547,7 +547,8 @@ components:
               button_name:
                 type: string
                 example: Подписаться
-                link: string
+              link: 
+                type: string
                 example: https://youdo.com/subscribe
         link:
           type: string
