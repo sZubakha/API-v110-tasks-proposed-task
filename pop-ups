@@ -198,7 +198,7 @@ paths:
                     clickable_area: buttons
                     buttons:
                       - button_name: Подписаться
-                      link: https://youdo.com/subscribe                    
+                        link: https://youdo.com/subscribe                    
                     title:
                       - text: Подпишитесь на новые задания, чтобы первым получить заказ.
                         styles:
