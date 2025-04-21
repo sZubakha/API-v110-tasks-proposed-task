@@ -67,8 +67,9 @@ paths:
                     plain_text: Подпишитесь на новые задания, чтобы первым получить заказ.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
                     clickable_area: buttons
-                    button_name: Подписаться
-                    link: https://youdo.com/subscribe
+                    buttons:
+                      - button_name: Подписаться
+                        link: https://youdo.com/subscribe                    
                     title:
                       - text: Подпишитесь на новые задания, чтобы первым получить заказ.
                         styles:
@@ -78,7 +79,7 @@ paths:
                           - type: color
                             value: "#4caf50"
                             offset: 0
-                            length: 22
+                            length: 22  
         "400":
           description: Неверный запрос
           content:
@@ -198,7 +199,7 @@ paths:
                     clickable_area: buttons
                     buttons:
                       - button_name: Подписаться
-                        link: https://youdo.com/subscribe                    
+                        link: https://youdo.com/profile/settings/notifications                    
                     title:
                       - text: Подпишитесь на новые задания, чтобы первым получить заказ.
                         styles:
@@ -258,8 +259,9 @@ paths:
                     plain_text: Сейчас в вашем городе идёт большая рекламная кампания YouDo. Заданий будет ещё больше! Станьте исполнителем и начните зарабатывать.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=3&AvatarType=H60W60
                     clickable_area: buttons
-                    button_name: Подтвердить
-                    link: https://youdo.com/verify
+                    buttons:
+                      - button_name: Стать исполнителем
+                        link: https://youdo.com/verification 
                     title:
                       - text: Сейчас в вашем городе идёт большая рекламная кампания YouDo. Заданий будет ещё больше! Станьте исполнителем и начните зарабатывать.
                         styles:
@@ -318,10 +320,12 @@ paths:
                     pop_ups_name: sufficient-tasks-warning
                     plain_text: YouDo недавно появился в вашем городе, поэтому заказов пока немного. Подпишитесь на уведомления, чтобы быстро узнавать о новых заданиях.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=4&AvatarType=H60W60
-                    clickable_area: pop-up
-                    link: https://youdo.com/tasks
+                    clickable_area: buttons
+                    buttons:
+                      - button_name: Подписаться
+                        link: https://youdo.com/profile/settings/notifications
                     title:
-                      - text: uDo недавно появился в вашем городе, поэтому заказов пока немного.
+                      - text: YouDo недавно появился в вашем городе, поэтому заказов пока немного.
                         styles:
                           - type: bold
                             offset: 0
