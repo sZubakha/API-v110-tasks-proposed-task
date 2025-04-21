@@ -196,8 +196,9 @@ paths:
                     plain_text: Подпишитесь на новые задания, чтобы первым получить заказ.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
                     clickable_area: buttons
-                    button_name: Подписаться
-                    link: https://youdo.com/subscribe
+                    buttons:
+                      - button_name: Подписаться
+                      link: https://youdo.com/subscribe                    
                     title:
                       - text: Подпишитесь на новые задания, чтобы первым получить заказ.
                         styles:
@@ -514,7 +515,6 @@ components:
         - pop_ups_name
         - plain_text
         - clickable_area
-        - link
         - title
       properties:
         id:
@@ -547,6 +547,8 @@ components:
               button_name:
                 type: string
                 example: Подписаться
+                link: string
+                example: https://youdo.com/subscribe
         link:
           type: string
           example: https://youdo.com/t13619539
