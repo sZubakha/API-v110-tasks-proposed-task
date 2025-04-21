@@ -18,7 +18,7 @@ paths:
       parameters:
         - name: X-Source-Page
           in: header
-          required: false
+          required: true
           description: URL страницы, с которой пришёл пользователь (влияет на логику
             показа pop-up окон)
           schema:
@@ -66,7 +66,7 @@ paths:
                     pop_ups_name: subscribe
                     plain_text: Подпишитесь на новые задания, чтобы первым получить заказ.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
-                    clickable_area: button
+                    clickable_area: buttons
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
@@ -195,7 +195,7 @@ paths:
                     pop_ups_name: subscribe
                     plain_text: Подпишитесь на новые задания, чтобы первым получить заказ.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
-                    clickable_area: button
+                    clickable_area: buttons
                     button_name: Подписаться
                     link: https://youdo.com/subscribe
                     title:
@@ -256,7 +256,7 @@ paths:
                     pop_ups_name: verify
                     plain_text: Сейчас в вашем городе идёт большая рекламная кампания YouDo. Заданий будет ещё больше! Станьте исполнителем и начните зарабатывать.
                     icon: https://avatar.youdo.com/get.userAvatar?AvatarId=3&AvatarType=H60W60
-                    clickable_area: button
+                    clickable_area: buttons
                     button_name: Подтвердить
                     link: https://youdo.com/verify
                     title:
@@ -535,12 +535,18 @@ components:
           type: string
           enum:
           - pop-up
-          - button
+          - buttons
           description: Определяет, где пользователь может кликнуть для действия — по попапу целиком или только по кнопке.
           example: pop-up
-        button_name:
-          type: string
-          example: Подписаться
+        buttons:
+          type: array
+          description: Массив кнопок, каждая из которых содержит название действия.
+          items:
+            type: object
+            properties:
+              button_name:
+                type: string
+                example: Подписаться
         link:
           type: string
           example: https://youdo.com/t13619539
