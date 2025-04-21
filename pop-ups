@@ -533,6 +533,10 @@ components:
           example: https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60
         clickable_area:
           type: string
+          enum:
+          - pop-up
+          - button
+          description: Определяет, где пользователь может кликнуть для действия — по попапу целиком или только по кнопке.
           example: pop-up
         button_name:
           type: string
@@ -556,6 +560,10 @@ components:
                   properties:
                     type:
                       type: string
+                      enum:
+                      - bold
+                      - italic
+                      - color
                       example: bold
                     offset:
                       type: integer
@@ -563,6 +571,10 @@ components:
                     length:
                       type: integer
                       example: 22
+                    value:
+                      type: string
+                      description: Цвет в формате Hex.
+                      example: #42aaff
         message:
           type: array
           description: Текст попапа с возможностью стилизации текста.
@@ -579,13 +591,21 @@ components:
                   properties:
                     type:
                       type: string
-                      example: italic
+                      enum:
+                      - bold
+                      - italic
+                      - color
+                      example: bold
                     offset:
                       type: integer
                       example: 0
                     length:
                       type: integer
-                      example: 29
+                      example: 22
+                    value:
+                      type: string
+                      description: Цвет в формате Hex.
+                      example: #42aaff
     ErrorResponse:
       type: object
       required:
