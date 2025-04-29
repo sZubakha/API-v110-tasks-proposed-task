@@ -14,13 +14,13 @@ paths:
             summary: Получение списка баннеров
             description: Возвращает список баннеров, отображаемых пользователю.
             parameters:
-                - name: Referer
-                  in: header
+                - name: source
+                  in: query
                   required: true
-                  description: URL страницы, с которой пришёл запрос (влияет на логику показа баннеров)
+                  description: Идентификатор источника запроса (для веб - URL страницы, для мобильного - название экрана)
                   schema:
                       type: string
-                      example: /profile
+                      example: profile
                 - name: type
                   in: query
                   required: false
@@ -61,7 +61,7 @@ paths:
                                           - type: size
                                             value: 14
                                             offset: 0
-                                            length: 26
+                                            length: 22
                                       icon: https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60
                                       clickable_area:
                                           - type: banner
@@ -72,15 +72,14 @@ paths:
                                       styles:
                                           - type: bold
                                             offset: 0
-                                            length: 22
+                                            length: 28
                                           - type: color
                                             value: "#4caf50"
                                             offset: 0
                                             length: 22
-                                      icon: https://avatar.youdo.com/get.userAvatar?AvatarId=2&AvatarType=H60W60
                                       clickable_area:
                                           - type: buttons
-                                            button_name: Подписаться
+                                            name: Подписаться
                                             link: https://youdo.com/subscribe
                 "400":
                     description: Неверный запрос
@@ -288,6 +287,7 @@ components:
                             value:
                                 type: string
                                 nullable: true
+                                description: Значение для стиля. Например, для цвета это будет hex-код цвета, а для размера - размер шрифта.
                 icon:
                     type: string
                     format: uri
@@ -307,9 +307,10 @@ components:
                             link:
                                 type: string
                                 format: uri
-                            button_name:
+                            name:
                                 type: string
                                 nullable: true
+                                description: Текст кнопки. Используется только когда значение поля type родительского объекта в массиве clickable_area равно 'buttons'. Например, "name": "Subscribe".
         ErrorResponse:
             type: object
             required:
@@ -335,3 +336,4 @@ components:
                         timestamp:
                             type: string
                             format: date-time
+
