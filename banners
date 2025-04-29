@@ -310,7 +310,7 @@ components:
                             name:
                                 type: string
                                 nullable: true
-                                description: Текст кнопки. Используется только когда значение поля type родительского объекта в массиве clickable_area равно 'buttons'. Например, "name": "Subscribe".
+                                description: Текст кнопки. Используется только когда значение поля type родительского объекта в массиве clickable_area равно buttons. Например - Subscribe.
         ErrorResponse:
             type: object
             required:
