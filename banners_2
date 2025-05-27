@@ -1,0 +1,338 @@
+openapi: 3.0.3
+info:
+    title: Banners API
+    version: 1.0.0
+    description: API для получения баннеров в зависимости от состояния пользователя и страницы источника запроса.
+servers:
+    - url: https://youdo.com
+      description: Основной сервер API
+security:
+    - cookieAuth: []
+paths:
+    /banners:
+        get:
+            summary: Получение списка баннеров
+            description: Возвращает список баннеров, отображаемых пользователю.
+            parameters:
+                - name: source
+                  in: query
+                  required: true
+                  description: Идентификатор источника запроса (для веб - URL страницы, для мобильного - название экрана)
+                  schema:
+                      type: string
+                      example: profile
+                - name: type
+                  in: query
+                  required: false
+                  description: Фильтрация баннеров по типу
+                  schema:
+                       type: string
+                       enum:
+                        - proposed-task
+                        - subscribe
+                        - verify
+                        - sufficient-tasks-warning
+                       example: proposed-task
+            responses:
+                "200":
+                    description: Успешный ответ со списком баннеров.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    banners:
+                                        type: array
+                                        items:
+                                            $ref: "#/components/schemas/Banner"
+                            example:
+                                banners:
+                                    - id: 126
+                                      name: proposed-task
+                                      type: promo
+                                      text: Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание
+                                      styles:
+                                          - type: bold
+                                            offset: 0
+                                            length: 22
+                                          - type: color
+                                            value: "#42aaff"
+                                            offset: 23
+                                            length: 48
+                                          - type: size
+                                            value: 14
+                                            offset: 0
+                                            length: 22
+                                      icon: https://avatar.youdo.com/get.userAvatar?AvatarId=0&AvatarType=H60W60
+                                      clickable_area:
+                                          - type: banner
+                                            action: https://youdo.com/t13619539
+                                            openMode: new_tab
+                                    - id: 128
+                                      name: subscribe
+                                      type: info
+                                      text: Подпишитесь на новые задания, чтобы первым получить заказ.
+                                      styles:
+                                          - type: bold
+                                            offset: 0
+                                            length: 28
+                                          - type: color
+                                            value: "#4caf50"
+                                            offset: 0
+                                            length: 22
+                                      clickable_area:
+                                          - type: buttons
+                                            name: Подписаться
+                                            action: https://youdo.com/subscribe
+                                            openMode: same_tab
+                "400":
+                    description: Неверный запрос
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorResponse"
+                            example:
+                                error:
+                                    code: 400
+                                    message: Invalid request
+                                    details: Field 'email' is required
+                                    requestId: xyz456pqr
+                                    timestamp: 2025-02-25T12:34:56Z
+                "500":
+                    description: Внутренняя ошибка сервера
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorResponse"
+                            example:
+                                error:
+                                    code: 500
+                                    message: Internal server error
+                                    details: Unexpected condition occurred
+                                    requestId: abc123def
+                                    timestamp: 2025-02-25T12:34:56Z
+
+    /banners/{id}/close:
+        post:
+            summary: Закрытие баннера
+            description: Закрывает баннер с заданным ID.
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  description: Уникальный идентификатор баннера
+                  schema:
+                      type: string
+                      example: "126"
+            responses:
+                "200":
+                    description: Успешное закрытие баннера
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                "404":
+                    description: Баннер не найден
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorResponse"
+                            example:
+                                error:
+                                    code: 404
+                                    message: Banner not found
+                                    details: Banner with ID '126' not found
+                                    requestId: abc123def
+                                    timestamp: 2025-02-25T12:34:56Z
+                "500":
+                    description: Внутренняя ошибка сервера
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorResponse"
+                            example:
+                                error:
+                                    code: 500
+                                    message: Internal server error
+                                    details: Unexpected condition occurred
+                                    requestId: abc123def
+                                    timestamp: 2025-02-25T12:34:56Z
+
+    /banners/{id}/view:
+        post:
+            summary: Просмотр баннера
+            description: Помечает баннер как просмотренный.
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  description: Уникальный идентификатор баннера
+                  schema:
+                      type: string
+                      example: "126"
+            responses:
+                "200":
+                    description: Успешное обновление статуса баннера
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                "404":
+                    description: Баннер не найден
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorResponse"
+                            example:
+                                error:
+                                    code: 404
+                                    message: Banner not found
+                                    details: Banner with ID '126' not found
+                                    requestId: abc123def
+                                    timestamp: 2025-02-25T12:34:56Z
+                "500":
+                    description: Внутренняя ошибка сервера
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ErrorResponse"
+                            example:
+                                error:
+                                    code: 500
+                                    message: Internal server error
+                                    details: Unexpected condition occurred
+                                    requestId: abc123def
+                                    timestamp: 2025-02-25T12:34:56Z
+
+components:
+    securitySchemes:
+        cookieAuth:
+            type: apiKey
+            in: cookie
+            name: auth_token
+    schemas:
+        Banner:
+            type: object
+            required:
+                - id
+                - name
+                - text
+                - clickable_area
+                - type
+            properties:
+                id:
+                    type: integer
+                name:
+                    type: string
+                    enum:
+                        - proposed-task
+                        - subscribe
+                        - verify
+                        - sufficient-tasks-warning
+                type:
+                    type: string
+                    enum:
+                        - info
+                        - alert
+                        - promo
+                        - feature
+                        - basic
+                    description: |
+                        - info: Информационный 
+                        - alert: Важное предупреждение или ошибка
+                        - promo: Маркетинговый — реклама, акция, предложение
+                        - feature: Анонс новой фичи
+                        - basic: Базовый баннер, не относящийся к другим категориям
+                text:
+                    type: string
+                styles:
+                    type: array
+                    items:
+                        type: object
+                        required:
+                            - type
+                            - offset
+                            - length
+                        properties:
+                            type:
+                                type: string
+                                enum:
+                                    - bold
+                                    - color
+                                    - italic
+                                    - size
+                            offset:
+                                type: integer
+                            length:
+                                type: integer
+                            value:
+                                type: string
+                                nullable: true
+                                description: Значение для стиля. Например, для цвета это будет hex-код цвета, а для размера - размер шрифта.
+                icon:
+                    type: string
+                    format: uri
+                clickable_area:
+                    type: array
+                    items:
+                        type: object
+                        required:
+                            - type
+                            - action
+                            - openMode
+                        properties:
+                            type:
+                                type: string
+                                enum:
+                                    - banner
+                                    - buttons
+                            action:
+                                type: string
+                                format: uri
+                                description: Для мобильных клиентов это deeplink, веб воспринимает deeplink не как ссылку, а как название экшена и дальше обрабатывает его сам.
+                            openMode:
+                                type: string
+                                enum:
+                                    - same_tab
+                                    - new_tab
+                                    - new_window
+                                    - popup
+                                    - modal
+                                description: Способ открытия ссылки/экшена. Для мобилок это может быть Full screen, Bottom sheet, In-app modal, External browser, In-app browser 
+                            name:
+                                type: string
+                                nullable: true
+                                description: Текст кнопки. Используется только когда значение поля type родительского объекта в массиве clickable_area равно buttons. Например - Subscribe.
+        ErrorResponse:
+            type: object
+            required:
+                - error
+            properties:
+                error:
+                    type: object
+                    required:
+                        - code
+                        - message
+                        - requestId
+                        - timestamp
+                    properties:
+                        code:
+                            type: integer
+                        message:
+                            type: string
+                        details:
+                            type: string
+                            nullable: true
+                        requestId:
+                            type: string
+                        timestamp:
+                            type: string
+                            format: date-time
