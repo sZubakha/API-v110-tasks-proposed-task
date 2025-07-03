@@ -53,85 +53,85 @@ paths:
                                       text: Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание
                                       picture:
                                           type: ILLUSTRATION_IN_THE_CIRCLE_ON_THE_TOP_LEFT
-                                          url: https://example.com/image.jpg
+                                          url: https://youdo.com/image.jpg
                                       styles:
-                                          - type: bold
+                                          - type: BOLD
                                             offset: 0
                                             length: 22
-                                          - type: color
+                                          - type: COLOR
                                             value: PURPLE
                                             offset: 23
                                             length: 48
-                                          - type: size
+                                          - type: SIZE
                                             value: 14
                                             offset: 0
                                             length: 22
-                                          - type: margin
+                                          - type: MARGIN
                                             value: 4
                                             offset: 56
                                             length: 1
                                       clickable_area:
-                                          - type: banner
+                                          - type: BANNER
                                             action: https://youdo.com/t13619539
-                                            open_mode: new_tab
+                                            open_mode: NEW_TAB
                                     - id: 128
                                       name: subscribe
                                       color_scheme: POSITIVE
                                       text: Подпишитесь на новые задания, чтобы первым получить заказ.
                                       styles:
-                                          - type: bold
+                                          - type: BOLD
                                             offset: 0
                                             length: 28
-                                          - type: color
+                                          - type: COLOR
                                             value: GREEN
                                             offset: 0
                                             length: 22
                                       picture:
                                           type: ICON_TOP_LEFT
-                                          url: https://example.com/image2.jpg
+                                          url: https://youdo.com/image2.jpg
                                       clickable_area:
-                                          - type: buttons
+                                          - type: BUTTONS
                                             name: Подписаться
                                             button_color: PRIMARY
                                             action: https://youdo.com/subscribe
-                                            open_mode: same_tab
+                                            open_mode: SAME_TAB
                                     - id: 129
                                       name: verify
                                       color_scheme: WARNING
                                       text: Пройдите верификацию для получения более выгодных заданий
                                       styles:
-                                          - type: bold
+                                          - type: BOLD
                                             offset: 0
                                             length: 20
                                       picture:
                                           type: ILLUSTRATION_IS_IN_A_CIRCLE_ON_THE_LEFT_IN_THE_CENTER
-                                          url: https://example.com/image3.jpg
+                                          url: https://youdo.com/image3.jpg
                                       clickable_area:
-                                          - type: buttons
+                                          - type: BUTTONS
                                             name: Начать верификацию
                                             button_color: PRIMARY
                                             action: https://youdo.com/verification/start
-                                            open_mode: same_tab
-                                          - type: buttons
+                                            open_mode: SAME_TAB
+                                          - type: BUTTONS
                                             name: Узнать больше
                                             button_color: NEUTRAL
                                             action: https://youdo.com/verification/info
-                                            open_mode: new_tab
+                                            open_mode: NEW_TAB
                                     - id: 130
                                       name: sufficient-tasks-warning
                                       color_scheme: BRAND
                                       text: Узнайте, как получать больше заданий в нашей базе знаний
                                       styles:
-                                          - type: bold
+                                          - type: BOLD
                                             offset: 0
                                             length: 42
                                       picture:
                                           type: ILLUSTRATION_ON_THE_RIGHT
-                                          url: https://example.com/image4.jpg
+                                          url: https://youdof.com/image4.jpg
                                       clickable_area:
-                                          - type: link
+                                          - type: LINK
                                             action: https://youdo.com/help/articles/tasks
-                                            open_mode: new_tab
+                                            open_mode: NEW_TAB
                 "400":
                     description: Неверный запрос
                     content:
