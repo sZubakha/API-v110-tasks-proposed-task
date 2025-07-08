@@ -52,7 +52,8 @@ paths:
                                       color_scheme: ACCENT
                                       text: Вам предложили задание «Привезти мягкую игрушку»\nОткликнитесь на предложенное задание
                                       picture:
-                                          type: ILLUSTRATION_IN_THE_CIRCLE_ON_THE_TOP_LEFT
+                                          type: ILLUSTRATION_IN_THE_CIRCLE
+                                          location: LEFT
                                           url: https://youdo.com/image.jpg
                                       styles:
                                           - type: BOLD
@@ -87,7 +88,8 @@ paths:
                                             offset: 0
                                             length: 22
                                       picture:
-                                          type: ICON_TOP_LEFT
+                                          type: ICON
+                                          location: LEFT
                                           url: https://youdo.com/image2.jpg
                                       clickable_area:
                                           - type: BUTTONS
@@ -104,7 +106,8 @@ paths:
                                             offset: 0
                                             length: 20
                                       picture:
-                                          type: ILLUSTRATION_IS_IN_A_CIRCLE_ON_THE_LEFT_IN_THE_CENTER
+                                          type: ILLUSTRATION_IN_THE_CIRCLE
+                                          location: RIGHT
                                           url: https://youdo.com/image3.jpg
                                       clickable_area:
                                           - type: BUTTONS
@@ -126,7 +129,8 @@ paths:
                                             offset: 0
                                             length: 42
                                       picture:
-                                          type: ILLUSTRATION_ON_THE_RIGHT
+                                          type: ILLUSTRATION
+                                          location: BOTTOM
                                           url: https://youdof.com/image4.jpg
                                       clickable_area:
                                           - type: LINK
@@ -304,27 +308,31 @@ components:
                     required:
                         - type
                         - url
+                        - location
                     properties:
                         type:
                             type: string
                             enum:
-                                - ICON_TOP_LEFT
-                                - ICON_LEFT_CENTRE
-                                - ILLUSTRATION_IN_THE_CIRCLE_ON_THE_TOP_LEFT
-                                - ILLUSTRATION_IS_IN_A_CIRCLE_ON_THE_LEFT_IN_THE_CENTER
-                                - ILLUSTRATION_IN_THE_CIRCLE_ON_THE_TOP_RIGHT
-                                - ILLUSTRATION_IS_IN_A_CIRCLE_ON_THE_RIGHT_IN_THE_CENTER
-                                - ILLUSTRATION_ON_THE_LEFT
-                                - ILLUSTRATION_AT_THE_BOTTOM
-                                - ILLUSTRATION_ON_THE_RIGHT
-                                - ILLUSTRATION_AT_THE_TOP
-                            description: Тип расположения иконки или иллюстрации.
+                                - ICON
+                                - ILLUSTRATION_IN_THE_CIRCLE
+                                - ILLUSTRATION
+                            description: Тип иконки или иллюстрации.
+                        location:
+                            type: string
+                            enum:
+                                - LEFT
+                                - RIGHT
+                                - TOP
+                                - BOTTOM
+                                - FULL
+                            description: Расположение иконки или иллюстрации.
                         url:
                             type: string
                             format: uri
                             description: Адрес, по которому находится картинка.
                     example:
-                        type: ICON_TOP_LEFT
+                        type: ICON
+                        location: LEFT
                         url: https://example.com/image.png
                 styles:
                     type: array
